@@ -6,12 +6,14 @@ const {
   postABlog,
   updateABlog,
   deleteABlog,
+  getByCategory,
 } = require("../controller/blogController");
 
 router.get("/", getAllBlogs);
 router.post("/", postABlog);
 router.get("/:id", getABlog);
-router.patch("/:id", updateABlog);
+router.put("/:id", updateABlog);
 router.delete("/:id", deleteABlog);
+router.get("/filter/search", getByCategory);
 
 module.exports = router;
