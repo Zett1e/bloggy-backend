@@ -25,7 +25,11 @@ const postABlog = async (req, res) => {
     ]);
     res.status(201).json(rows);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    if (error.message.includes("Data too long for column 'body'")) {
+      res.status(400).json({ error: "Data too long for body" });
+    } else {
+      res.status(400).json({ error: error.message });
+    }
   }
 };
 
